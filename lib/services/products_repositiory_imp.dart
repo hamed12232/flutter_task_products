@@ -9,11 +9,13 @@ class ProductsRepositioryImp extends ProductsRepositiory {
   DioServices dioServices;
   ProductsRepositioryImp(this.dioServices);
   @override
-  Future<Either<String, ProductModel>> getAllProducts() async {
+  Future<Either<String, List<ProductModel>>> getAllProducts() async {
     try {
       final response = await dioServices.get(url: ApiConstant.getProducts);
       if (response.statusCode == 200) {
-        final productModel = ProductModel.fromJson(response.data);
+        List<ProductModel> productModel = (response.data as List)
+            .map((e) => ProductModel.fromJson(e))
+            .toList();
         return Right(productModel);
       } else {
         return Left("Error: ${response.statusCode}");

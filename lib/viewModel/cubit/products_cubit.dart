@@ -8,7 +8,12 @@ part 'products_state.dart';
 class ProductsCubit extends Cubit<ProductsState> {
   ProductsCubit(this.productsRepositiory) : super(ProductsInitial());
   final ProductsRepositiory productsRepositiory;
-  void getProducts() {
-    
+  void getProducts() async {
+    emit(ProductsLoading());
+    final response = await productsRepositiory.getAllProducts();
+    response.fold(
+      (errorMessage) => emit(ProductsError(errorMessage)),
+      (products) => emit(ProductsLoaded(products)),
+    );
   }
 }
