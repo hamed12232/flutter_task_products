@@ -1,5 +1,3 @@
-
-
 import 'package:dio/dio.dart';
 import 'package:flutter_task_products/core/api/api_constant.dart';
 import 'package:flutter_task_products/core/api/api_consumer.dart';
@@ -23,8 +21,6 @@ class DioServices extends ApiConsumer {
   }
 
   @override
-  
-
   @override
   Future<dynamic> get({
     required String url,
@@ -36,6 +32,5 @@ class DioServices extends ApiConsumer {
     } on DioException catch (e) {
       handleDioException(e);
     }
-  }  
-  
+  }
 }
