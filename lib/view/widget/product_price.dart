@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_task_products/core/utils/app_colors.dart';
 
 class ProductPrice extends StatelessWidget {
-  final String price;
-  final String oldPrice;
+  final double price;
+  final double oldPrice;
   const ProductPrice({super.key, required this.price, required this.oldPrice});
 
   @override
@@ -11,7 +11,7 @@ class ProductPrice extends StatelessWidget {
     return Row(
       children: [
         Text(
-          price,
+          "$price",
           style: TextStyle(
             color: AppColors.discountProductColor,
             fontSize: 14,
@@ -20,7 +20,7 @@ class ProductPrice extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         Text(
-          oldPrice,
+          (price-100).toStringAsFixed(2),
           style: TextStyle(
             color: AppColors.addToCartProductColor,
             fontSize: 12,

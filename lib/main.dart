@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_task_products/view/product_list_screen.dart';
 
+import 'core/Di/get_it.dart' as di;
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  di.init();
   runApp(const MyApp());
 }
 

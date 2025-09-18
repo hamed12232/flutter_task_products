@@ -13,13 +13,20 @@ class DioServices extends ApiConsumer {
     dio.options.connectTimeout = const Duration(seconds: 30);
     dio.options.receiveTimeout = const Duration(seconds: 30);
     dio.options.sendTimeout = const Duration(seconds: 30);
+    dio.options.validateStatus = (status) {
+      return status! < 500;
+    };
+    dio.options.headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
   }
 
   @override
   
 
   @override
-  Future get({
+  Future<dynamic> get({
     required String url,
     Map<String, dynamic>? queryParameters,
   }) async {

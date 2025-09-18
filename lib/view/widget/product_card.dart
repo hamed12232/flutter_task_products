@@ -10,8 +10,7 @@ import 'package:flutter_task_products/view/widget/product_title.dart';
 class ProductCard extends StatelessWidget {
   final String title;
   final String subtitle;
-  final String price;
-  final String oldPrice;
+  final double price;
   final double rating;
   final String imageUrl;
 
@@ -20,7 +19,6 @@ class ProductCard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.price,
-    required this.oldPrice,
     required this.rating,
     required this.imageUrl,
   });
@@ -44,11 +42,11 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ProductTitle(title: title, subtitle: subtitle),
-                const SizedBox(height: 8),
-                ProductPrice(price: price, oldPrice: oldPrice),
-                const SizedBox(height: 8),
+                VerticalSpace(height: AppHight.h8),
+                ProductPrice(price: price, oldPrice: price),
+                VerticalSpace(height: AppHight.h8),
                 ProductFooter(rating: rating),
-                const SizedBox(height: 8),
+                VerticalSpace(height: AppHight.h8),
               ],
             ),
           ),

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_task_products/model/rating_model.dart';
 
 class ProductModel extends Equatable {
-  final int id;
+  final double id;
   final String title;
   final String description;
   final String image;
@@ -21,10 +21,10 @@ class ProductModel extends Equatable {
   });
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      id: json['id'],
+      id: (json['id'] as num).toDouble(),
       title: json['title'],
       image: json['image'],
-      price: json['price'],
+      price: (json['price'] as num).toDouble(),
       category: json['category'],
       rating: RatingModel.fromJson(json['rating']),
       description: json['description'],
