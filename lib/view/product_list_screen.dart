@@ -5,6 +5,7 @@ import 'package:flutter_task_products/core/utils/app_colors.dart';
 import 'package:flutter_task_products/model/product_model.dart';
 import 'package:flutter_task_products/view/widget/product_card.dart';
 import 'package:flutter_task_products/viewModel/cubit/products_cubit.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
@@ -33,7 +34,32 @@ class _ProductListScreenState extends State<ProductListScreen> {
           body: BlocBuilder<ProductsCubit, ProductsState>(
             builder: (context, state) {
               if (state is ProductsLoading) {
-                return const Center(child: CircularProgressIndicator());
+                return Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: GridView.builder(
+                    itemCount: 6,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 16,
+                          crossAxisSpacing: 16,
+                          childAspectRatio: 0.74,
+                        ),
+                    itemBuilder: (context, index) {
+                      return Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          margin: const EdgeInsets.symmetric(vertical: 4),
+                        ),
+                      );
+                    },
+                  ),
+                );
               } else if (state is ProductsError) {
                 return Center(child: Text(state.message));
               } else if (state is ProductsLoaded) {
@@ -56,7 +82,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
                         imageUrl: product.image,
                         rating: product.rating.rate,
                         subtitle: product.description,
-                        
                       );
                     },
                   ),

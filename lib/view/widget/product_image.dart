@@ -26,8 +26,6 @@ class ProductImage extends StatelessWidget {
               placeholder: (context, url) =>
                   const Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) {
-                print('Error loading image: $url');
-                print('Error details: $error');
                 return const Center(
                   child: Icon(Icons.error, color: Colors.red),
                 );
