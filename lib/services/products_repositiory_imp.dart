@@ -12,11 +12,9 @@ class ProductsRepositioryImp extends ProductsRepositiory {
   Future<Either<String, List<ProductModel>>> getAllProducts() async {
     try {
       final response = await dioServices.get(url: ApiConstant.getProducts);
-      print('API Response: $response');
       List<ProductModel> productModel = (response as List)
           .map((e) => ProductModel.fromJson(e))
           .toList();
-      print('First product image URL: ${productModel.first.image}');
       return Right(productModel);
     } on DioException catch (e) {
       return Left("Dio Exception: ${e.message}");

@@ -11,7 +11,7 @@ class ProductPrice extends StatelessWidget {
     return Row(
       children: [
         Text(
-          "$price",
+          "EGP $price",
           style: TextStyle(
             color: AppColors.discountProductColor,
             fontSize: 14,

@@ -19,15 +19,18 @@ class ProductTitle extends StatelessWidget {
           style: TextStyle(
             color: AppColors.titleProductColor,
             fontSize: 16,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 2),
+        const SizedBox(height: 1),
         Text(
           subtitle,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(color: AppColors.titleProductColor, fontSize: 13),
+          style: TextStyle(color: AppColors.titleProductColor, fontSize: 13,
+                      fontWeight: FontWeight.w500,
+
+          ),
         ),
       ],
     );

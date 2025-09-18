@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_products/core/utils/app_colors.dart';
+import 'package:flutter_task_products/core/utils/app_hight.dart';
+import 'package:flutter_task_products/core/utils/app_width.dart';
 
 class FavoriteButton extends StatelessWidget {
   const FavoriteButton({super.key});
@@ -21,11 +23,12 @@ class FavoriteButton extends StatelessWidget {
         ],
       ),
       child: Center(
-        child: Icon(
-          Icons.favorite_border,
-          color: AppColors.addToCartProductColor,
-          size: 16,
-        )
+        child: Image.asset(
+          'assets/images/Heart.png',
+          width: AppWidth.w20,
+          height: AppHight.h20,
+          
+        ),
       ),
     );
   }
