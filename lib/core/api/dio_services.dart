@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_task_products/core/api/api_constant.dart';
 import 'package:flutter_task_products/core/api/api_consumer.dart';
+import 'package:flutter_task_products/core/errors/failures.dart';
 
 class DioServices extends ApiConsumer {
   Dio dio;
