@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_products/core/utils/app_colors.dart';
-import 'package:flutter_task_products/core/utils/app_hight.dart';
-import 'package:flutter_task_products/core/utils/app_width.dart';
-import 'package:remixicon/remixicon.dart';
+import 'package:flutter_task_products/view/widget/product_card.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});
@@ -12,77 +10,70 @@ class ProductListScreen extends StatefulWidget {
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {
+  final List<Map<String, dynamic>> _products = [
+    {
+      'title': 'Nike Air Jordon',
+      'subtitle': 'Nike shoes flexible for wo...',
+      'price': 'EGP 1,200',
+      'oldPrice': '2000 EGP',
+      'rating': 4.6,
+      'image': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop',
+    },
+    {
+      'title': 'Nike Air Jordon',
+      'subtitle': 'Nike shoes flexible for wo...',
+      'price': 'EGP 1,100',
+      'oldPrice': '1,500 EGP',
+      'rating': 4.5,
+      'image': 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop',
+    },
+    {
+      'title': 'Nike Air Jordon',
+      'subtitle': 'Nike shoes flexible for wo...',
+      'price': 'EGP 1,000',
+      'oldPrice': '1,300 EGP',
+      'rating': 4.8,
+      'image': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop',
+    },
+    {
+      'title': 'Nike Air Jordon',
+      'subtitle': 'Nike shoes flexible for wo...',
+      'price': 'EGP 1,500',
+      'oldPrice': '2000 EGP',
+      'rating': 4.8,
+      'image': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop',
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.primary,
-        body: Column(
-          children: [
-            Container(
-              width: AppWidth.w170,
-              height: AppHight.h220,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: AppColors.borderProductColor,
-                  width: 3,
-                ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    alignment: Alignment.topCenter,
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          "assets/images/image.png",
-                          width: AppWidth.w170,
-                          height: AppHight.h100,),
-                        Positioned(
-                          top: 10,
-                          right: 10,
-                          child: Container(
-                            padding: const EdgeInsets.all(3),
-                            decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              shape: BoxShape.circle,
-                            ),
-
-                            child: Icon(
-                              Remix.heart_2_line,
-                              color: AppColors.addToCartProductColor,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    "Product Title",
-                    style: TextStyle(
-                      color: AppColors.titleProductColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    "\$55.00",
-                    style: TextStyle(
-                      color: AppColors.discountProductColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+        body: Padding(
+          padding: const EdgeInsets.all(12),
+          child: GridView.builder(
+            itemCount: _products.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 0.74,
             ),
-          ],
+            itemBuilder: (context, index) {
+              final product = _products[index];
+              return ProductCard(
+                title: product['title'],
+                subtitle: product['subtitle'],
+                price: product['price'],
+                oldPrice: product['oldPrice'],
+                rating: product['rating'],
+                imageUrl: product['image'],
+              );
+            },
+          ),
         ),
       ),
     );
   }
 }
+
